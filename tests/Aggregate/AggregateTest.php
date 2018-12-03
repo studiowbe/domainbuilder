@@ -8,7 +8,6 @@ use Studiow\DomainBuilder\Test\TestDomain\Model\Events\ContentChangedEvent;
 use Studiow\DomainBuilder\Test\TestDomain\Model\Events\TitleChangedEvent;
 use Studiow\DomainBuilder\Test\TestDomain\Model\Post;
 use Studiow\DomainBuilder\Test\TestDomain\Model\PostId;
-use Studiow\DomainBuilder\Test\TestDomain\PostRepository;
 
 class AggregateTest extends TestCase
 {
@@ -44,5 +43,4 @@ class AggregateTest extends TestCase
         $this->assertEquals('the title', $post->getTitle());
         $this->assertEquals('the content', $post->getContent());
     }
-
 }

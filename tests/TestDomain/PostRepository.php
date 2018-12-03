@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Studiow\DomainBuilder\Test\TestDomain;
-
 
 use Studiow\DomainBuilder\Aggregate\Identifier;
 use Studiow\DomainBuilder\Aggregate\Repository\MemoryRepository;
@@ -12,6 +10,7 @@ class PostRepository extends MemoryRepository
 {
     /**
      * @param Identifier $identifier
+     *
      * @return Post
      */
     public function fromIdentifier(Identifier $identifier)

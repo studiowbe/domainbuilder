@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Studiow\DomainBuilder\Aggregate;
-
 
 interface AggregateRepository
 {
