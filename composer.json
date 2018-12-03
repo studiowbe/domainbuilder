@@ -1,0 +1,33 @@
+{
+  "name": "studiow/domainbuilder",
+  "description": "Tools for building event-sourced domains",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Willem Wollebrants",
+      "email": "willem@studiow.be",
+      "homepage": "http://studiow.be",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=7.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Studiow\\DomainBuilder\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Studiow\\DomainBuilder\\Test\\": "tests"
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit",
+    "cs": "php-cs-fixer fix"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^7.3"
+  }
+}
