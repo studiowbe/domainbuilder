@@ -2,36 +2,21 @@
 
 namespace Studiow\DomainBuilder\Test\Event;
 
-use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use Studiow\DomainBuilder\Event\History;
-use Studiow\DomainBuilder\Test\TestDomain\Model\Events\ContentChangedEvent;
-use Studiow\DomainBuilder\Test\TestDomain\Model\Events\TitleChangedEvent;
-use Studiow\DomainBuilder\Test\TestDomain\Model\PostId;
+use Studiow\DomainBuilder\Identity\Identifier\StringIdentifier;
+use Studiow\DomainBuilder\Test\TestDomain\GenericEvent;
 
 class HistoryTest extends TestCase
 {
-    public function testBuildingHistory()
+    public function testCreatingHistory()
     {
-        $post_id = PostId::fromString('test-id');
-        $events = [
-            new TitleChangedEvent($post_id, 'title'),
-            new ContentChangedEvent($post_id, 'content'),
-        ];
+        $id = StringIdentifier::fromString('test-id');
+        $ev = GenericEvent::fromPayload(['foo' => 'bar']);
 
-        $history = new History($post_id, $events);
-        $this->assertEquals(2, count($history));
-    }
+        $history = new History($id, [$ev]);
+        $this->assertTrue($history->getIdentifier()->equals($id));
 
-    public function testInvalidIdentifierThrowsException()
-    {
-        $post_id = PostId::fromString('test-id');
-        $other_id = PostId::fromString('other-id');
-        $events = [
-            new TitleChangedEvent($post_id, 'title'),
-            new ContentChangedEvent($other_id, 'content'),
-        ];
-        $this->expectException(InvalidArgumentException::class);
-        new History($post_id, $events);
+        $this->assertSame($ev, $history[0]);
     }
 }
